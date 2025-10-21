@@ -1,9 +1,8 @@
+<!-- HomeView.vue - Dejar solo esto -->
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import HeroSection from '@/components/HeroSection.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <HeroSection />
 </template>
