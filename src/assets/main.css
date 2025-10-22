@@ -1,56 +1,33 @@
-/* src/assets/main.css - VERSIÓN CORREGIDA */
+/* src/assets/main.css */
 @import './base.css';
 
-/* Reset de los estilos problemáticos */
 #app {
-  max-width: 100%; /* Quitar el límite fijo */
+  max-width: 100%;
   margin: 0;
   padding: 0;
   font-weight: normal;
   width: 100%;
 }
 
-/* Estilos globales para enlaces */
 a {
   text-decoration: none;
-  color: var(--color-primary, hsla(160, 100%, 37%, 1));
+  color: var(--color-primary);
   transition: 0.4s;
 }
 
 a:hover {
-  color: var(--color-primary-dark, hsla(160, 100%, 47%, 1));
+  color: var(--color-primary-light);
 }
 
-/* Variables CSS adicionales para tu portfolio */
-:root {
-  --color-primary: hsla(160, 100%, 37%, 1);
-  --color-primary-dark: hsla(160, 100%, 47%, 1);
-  --color-border-dark: #333;
-  --color-text-light: #ccc;
-  --color-heading: var(--vt-c-text-dark-1);
-}
-
-/* Responsive base */
-body {
-  display: block; /* Override del flex problemático */
-}
-
-/* Contenedor principal responsivo */
+/* Container para consistencia */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Media queries limpias */
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 0.75rem;
   }
 }

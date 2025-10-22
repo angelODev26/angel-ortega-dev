@@ -4,6 +4,7 @@ import { RouterView } from 'vue-router'
 import Header from '@/components/layout/Header.vue'
 import Footer from '@/components/layout/Footer.vue'
 // NO hay lógica de i18n, ni variables, ni props aquí. ¡Súper limpio!
+
 </script>
 
 <template>
@@ -18,6 +19,7 @@ import Footer from '@/components/layout/Footer.vue'
 
 <style scoped>
 /* ¡SÓLO ESTOS ESTILOS DEBEN QUEDAR! */
+
 .app-main-content {
   max-width: 1280px;
   margin: 0 auto;

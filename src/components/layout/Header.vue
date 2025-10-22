@@ -26,12 +26,8 @@ const toggleMobileMenu = () => {
       </div>
 
       <!-- Botón menú móvil -->
-      <button
-        class="mobile-menu-toggle"
-        @click="toggleMobileMenu"
-        :aria-expanded="isMobileMenuOpen"
-        aria-label="Toggle menu"
-      >
+      <button class="mobile-menu-toggle" @click="toggleMobileMenu" :aria-expanded="isMobileMenuOpen"
+        aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
@@ -56,11 +52,7 @@ const toggleMobileMenu = () => {
         <div class="controls-end-group">
           <!-- SOLO UN language selector debe estar aquí -->
           <div class="language-selector-wrapper">
-            <select
-              :value="locale"
-              @change="changeLanguage($event.target.value)"
-              class="language-selector"
-            >
+            <select :value="locale" @change="changeLanguage($event.target.value)" class="language-selector">
               <option value="es">ES</option>
               <option value="en">US</option>
             </select>
@@ -146,6 +138,8 @@ const toggleMobileMenu = () => {
   font-weight: 500;
   transition: color 0.2s;
   padding: 0.5rem 0;
+  position: relative;
+  /* ← AÑADIR esta línea */
 }
 
 .main-nav a:hover,
@@ -153,31 +147,61 @@ const toggleMobileMenu = () => {
   color: var(--color-primary);
 }
 
-/* Selector de Idioma */
+/* AÑADIR estas clases al .main-nav a */
+.main-nav a.router-link-active,
+.main-nav a.router-link-exact-active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.main-nav a.router-link-active::after,
+.main-nav a.router-link-exact-active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
 .language-selector {
-  background: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 0.4rem 0.8rem;
-  color: var(--color-text);
+  background: var(--color-bg-card);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  color: var(--color-text-primary);
   cursor: pointer;
-  /* Añadir estas propiedades */
+  font-size: 0.9rem;
   appearance: none;
-  /* ← Quitar estilo por defecto */
   -webkit-appearance: none;
   -moz-appearance: none;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-primary);
+}
+
+.language-selector:focus {
+  outline: 2px solid var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(23, 194, 229, 0.2);
 }
 
 .language-selector option {
-  background: var(--color-background-soft);
-  /* ← Fondo oscuro para opciones */
-  color: var(--color-text);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-primary);
 }
 
 /* Para Firefox */
 .language-selector::-moz-focus-inner {
   border: 0;
 }
+
+.language-selector:hover {
+  border-color: var(--color-primary);
+  background: var(--color-bg-soft);
+}
+
 
 /* Botón Descargar CV */
 .cta-button {
