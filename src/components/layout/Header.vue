@@ -20,22 +20,24 @@ const toggleMobileMenu = () => {
 <template>
   <header class="main-header">
     <div class="header-content-wrapper">
-
       <div class="logo-group">
         <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="30" height="30" />
         <span class="site-title">ANGEL-ORTEGA-DEV</span>
       </div>
 
       <!-- Botón menú móvil -->
-      <button class="mobile-menu-toggle" @click="toggleMobileMenu" :aria-expanded="isMobileMenuOpen"
-        aria-label="Toggle menu">
+      <button
+        class="mobile-menu-toggle"
+        @click="toggleMobileMenu"
+        :aria-expanded="isMobileMenuOpen"
+        aria-label="Toggle menu"
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
 
       <div class="nav-controls-group" :class="{ 'mobile-open': isMobileMenuOpen }">
-
         <nav class="main-nav">
           <RouterLink to="/" @click="isMobileMenuOpen = false">
             {{ t('header.home') }}
@@ -54,7 +56,11 @@ const toggleMobileMenu = () => {
         <div class="controls-end-group">
           <!-- SOLO UN language selector debe estar aquí -->
           <div class="language-selector-wrapper">
-            <select :value="locale" @change="changeLanguage($event.target.value)" class="language-selector">
+            <select
+              :value="locale"
+              @change="changeLanguage($event.target.value)"
+              class="language-selector"
+            >
               <option value="es">ES</option>
               <option value="en">US</option>
             </select>
@@ -65,7 +71,6 @@ const toggleMobileMenu = () => {
           </a>
         </div>
       </div>
-
     </div>
   </header>
 </template>
@@ -289,15 +294,15 @@ const toggleMobileMenu = () => {
 }
 
 /* Animación hamburger menu */
-.mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+.mobile-menu-toggle[aria-expanded='true'] span:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
 }
 
-.mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+.mobile-menu-toggle[aria-expanded='true'] span:nth-child(2) {
   opacity: 0;
 }
 
-.mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+.mobile-menu-toggle[aria-expanded='true'] span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 </style>

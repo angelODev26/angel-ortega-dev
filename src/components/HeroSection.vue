@@ -58,7 +58,9 @@
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .welcome-item:hover {
