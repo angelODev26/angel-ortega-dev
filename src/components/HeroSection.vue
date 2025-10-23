@@ -5,7 +5,9 @@
       <!-- Contenido de texto -->
       <div class="hero-text-content">
         <div class="hero-header">
-          <div class="icon">🚀</div>
+          <div class="icon">
+            <i class="devicon-rocket-plain"></i>
+          </div>
           <h1 class="hero-title">{{ $t('hero.greeting') }}</h1>
         </div>
 
@@ -36,7 +38,9 @@
 
     <div class="tech-cards-grid">
       <div class="tech-card">
-        <div class="tech-card-icon">🔌</div>
+        <div class="tech-card-icon">
+          <i class="devicon-nodejs-plain"></i>
+        </div>
         <h3 class="tech-card-title">{{ $t('hero.cards.apis') }}</h3>
         <p class="tech-card-description">{{ $t('hero.cards.apisDesc') }}</p>
         <p class="additional-text">
@@ -45,7 +49,9 @@
       </div>
 
       <div class="tech-card">
-        <div class="tech-card-icon">⚡</div>
+        <div class="tech-card-icon">
+          <i class="devicon-redis-plain"></i>
+        </div>
         <h3 class="tech-card-title">{{ $t('hero.cards.optimization') }}</h3>
         <p class="tech-card-description">{{ $t('hero.cards.optimizationDesc') }}</p>
         <p class="additional-text">
@@ -54,12 +60,17 @@
       </div>
 
       <div class="tech-card">
-        <div class="tech-card-icon">🛠️</div>
+        <div class="tech-card-icon">
+          <i class="devicon-stackoverflow-plain"></i>
+        </div>
         <h3 class="tech-card-title">{{ $t('hero.cards.technologies') }}</h3>
         <div class="tech-list">
-          <div v-for="tech in $tm('hero.cards.techList')" :key="tech" class="tech-item">
-            <span class="tech-icon">{{ tech.icon }}</span>
-            <span class="tech-text">{{ tech.text }}</span>
+          <div v-for="tech in technologiesList" :key="tech.name" class="tech-item">
+            <span class="tech-icon">
+              <i :class="tech.icon1"></i>
+              <i :class="tech.icon2"></i>
+            </span>
+            <span class="tech-text">{{ tech.name }}</span>
           </div>
         </div>
       </div>
@@ -70,6 +81,16 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import TechExplosionEffect from '@/components/ui/TechExplosionEffect.vue'
+
+const technologiesList = [
+  { name: 'PHP & Laravel', icon1: 'devicon-php-plain', icon2: 'devicon-laravel-plain' },
+  { name: 'Java & Spring Boot', icon1: 'devicon-java-plain', icon2: 'devicon-spring-plain' },
+  { name: 'Vue.js & JavaScript', icon1: 'devicon-vuejs-plain', icon2: 'devicon-javascript-plain' },
+  { name: 'MySQL & PostgreSQL', icon1: 'devicon-mysql-plain', icon2: 'devicon-postgresql-plain' },
+  { name: 'MongoDB & Redis', icon1: 'devicon-mongodb-plain', icon2: 'devicon-redis-plain' },
+  { name: 'Docker & AWS', icon1: 'devicon-docker-plain', icon2: 'devicon-amazonwebservices-plain' },
+  { name: 'Git & APIs REST', icon1: 'devicon-git-plain', icon2: 'devicon-nodejs-plain' }
+]
 </script>
 
 <style scoped>
@@ -123,6 +144,31 @@ import TechExplosionEffect from '@/components/ui/TechExplosionEffect.vue'
 
 .hero-header .icon {
   font-size: 3rem;
+  color: var(--color-primary);
+}
+
+.tech-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.tech-icon {
+  font-size: 1.1rem;
+  width: 50px;
+  text-align: center;
+  display: flex;
+  gap: 4px;
+  color: var(--color-primary);
+}
+
+/* Asegurar que los iconos se centren */
+.hero-header .icon,
+.tech-card-icon,
+.tech-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-title {
@@ -254,13 +300,9 @@ import TechExplosionEffect from '@/components/ui/TechExplosionEffect.vue'
 
 .tech-text {
   flex: 1;
+  padding-left: 0.5rem;
 }
 
-.tech-icon {
-  font-size: 1.1rem;
-  width: 24px;
-  text-align: center;
-}
 
 .additional-text {
   color: var(--color-text);
