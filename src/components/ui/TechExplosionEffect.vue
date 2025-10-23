@@ -12,7 +12,7 @@ let animationFrame = null
 const technologies = [
     { name: 'PHP/Laravel', angle: 0, distance: 51 },
     { name: 'Redis', angle: 60, distance: 65 },
-    { name: 'Vue.js', angle: 120, distance: 60 },
+    { name: 'Vue.js', angle: 125, distance: 60 },
     { name: 'Java/Spring', angle: 180, distance: 55 },
     { name: 'PostgreSQL', angle: 250, distance: 66 },
     { name: 'Node.js', angle: 295, distance: 60 },
@@ -70,14 +70,14 @@ class TechNode {
         )
         gradient.addColorStop(0, 'rgba(23, 194, 229, 1)')
         gradient.addColorStop(0.7, 'rgba(23, 194, 229, 0.6)')
-        gradient.addColorStop(1, 'rgba(23, 194, 229, 0.2)')
+        gradient.addColorStop(1, 'rgba(23, 194, 229, 0.4)')
 
         ctx.fillStyle = gradient
         ctx.fill()
 
         // Texto
         ctx.fillStyle = 'var(--color-text)'
-        ctx.font = '10px Space Mono'
+        ctx.font = '11px Space Mono'
         ctx.textAlign = 'center'
 
         ctx.fillText(this.name, this.x, this.y + 18)

@@ -11,7 +11,12 @@
 
         <h2 class="hero-subtitle">{{ $t('hero.title') }}</h2>
         <p class="hero-description">{{ $t('hero.subtitle') }}</p>
-        <p class="hero-achievement">{{ $t('hero.experience') }}</p>
+        <p class="hero-achievement">
+          {{ $t('hero.experience') }}...
+          <RouterLink to="/about" class="see-more-link">
+            {{ $t('hero.seeMore') }}
+          </RouterLink>
+        </p>
 
         <div class="hero-actions">
           <RouterLink to="/projects" class="cta-button primary">
@@ -263,6 +268,19 @@ import TechExplosionEffect from '@/components/ui/TechExplosionEffect.vue'
   line-height: 1.5;
   margin-top: 1rem;
   margin-bottom: 0;
+}
+
+.see-more-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.see-more-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }
 
 /* RESPONSIVE */

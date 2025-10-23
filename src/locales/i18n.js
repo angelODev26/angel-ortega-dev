@@ -30,6 +30,7 @@ const messages = {
       experience: "7+ años diseñando sistemas backend robustos y optimizados",
       exploreProjects: "Ver Proyectos",
       contactMe: "Contactar",
+      seeMore: "Ver más",
       cards: {
         apis: "APIs REST",
         apisDesc: "Diseño e implementación de APIs robustas, documentadas y listas para integración.",
@@ -47,6 +48,47 @@ const messages = {
           { icon: "🐳", text: "Docker & AWS" },
           { icon: "🔗", text: "Git & APIs REST" }
         ]
+      }
+    },
+    about: {
+      pageTitle: "Sobre Mí",
+      professionalSummary: "Resumen Profesional",
+      professionalSummaryText: "Desarrollador Backend PHP/Laravel con más de 7 años de experiencia diseñando y optimizando APIs REST y microservicios en entornos de alto volumen de datos. Experto en MySQL y PostgreSQL para modelado de esquemas, optimización de consultas e índices, y corrección de datos 'en caliente'. He logrado analizar cientos de miles de registros para detectar errores y, mediante históricos y análisis, corregirlos eficazmente. Desarrollé herramientas que procesaron y validaron hasta 150 000 registros en menos de 1 minuto. Competente en desarrollo de jobs en Laravel, APIs, controladores, validadores, seeders, comandos, colas (MongoDB, Redis, SQS) y webhooks. Experiencia en contenedorización con Docker, gestión de versiones con Git, almacenamiento en AWS S3 e integración con SendGrid/Masiv. Trabajo bajo metodologías Agile/Scrum y documentando APIs con Postman.",
+      workExperience: "Experiencia Laboral",
+      technicalSkills: "Habilidades Técnicas",
+      technicalSkills: "Habilidades Técnicas",
+      skillCategories: {
+        backend: "Backend",
+        databases: "Bases de Datos",
+        frontend: "Frontend",
+        devops: "DevOps & Cloud",
+        methodologies: "Metodologías"
+      },
+      skills: {
+        php: "PHP",
+        laravel: "Laravel",
+        java: "Java",
+        spring: "Spring Boot",
+        mysql: "MySQL",
+        postgresql: "PostgreSQL",
+        mongodb: "MongoDB",
+        redis: "Redis",
+        vue: "Vue.js",
+        javascript: "JavaScript",
+        docker: "Docker",
+        aws: "AWS",
+        git: "Git",
+        nginx: "Nginx",
+        postman: "Postman",
+        agile: "Agile/Scrum",
+        microservices: "Microservicios",
+        rest: "APIs REST",
+        bootstrap: "Bootstrap",
+        html: "HTML5",
+        css: "CSS3",
+        apache: "Apache",
+        linux: "Linux",
+        jquery: "jQuery"
       }
     },
     specialization: {
@@ -193,6 +235,7 @@ const messages = {
       experience: "7+ years designing robust and optimized backend systems",
       exploreProjects: "View Projects",
       contactMe: "Contact Me",
+      seeMore: "See more",
       cards: {
         apis: "REST APIs",
         apisDesc: "Design and implementation of robust, documented APIs ready for integration.",
@@ -211,6 +254,47 @@ const messages = {
           { icon: "🔗", text: "Git & REST APIs" }
         ]
 
+      }
+    },
+    about: {
+      pageTitle: "About Me",
+      professionalSummary: "Professional Summary",
+      professionalSummaryText: "PHP/Laravel Backend Developer with over 7 years of experience designing and optimizing REST APIs and microservices in high-volume data environments. Expert in MySQL and PostgreSQL for schema modeling, query and index optimization, and 'hot' data correction. I have successfully analyzed hundreds of thousands of records to detect errors and, through historical data and analysis, corrected them effectively. Developed tools that processed and validated up to 150,000 records in less than 1 minute. Proficient in Laravel job development, APIs, controllers, validators, seeders, commands, queues (MongoDB, Redis, SQS) and webhooks. Experience with Docker containerization, Git version control, AWS S3 storage, and SendGrid/Masiv integration. Work under Agile/Scrum methodologies and API documentation with Postman.",
+      workExperience: "Work Experience",
+      technicalSkills: "Technical Skills",
+      technicalSkills: "Technical Skills",
+      skillCategories: {
+        backend: "Backend",
+        databases: "Databases",
+        frontend: "Frontend",
+        devops: "DevOps & Cloud",
+        methodologies: "Methodologies"
+      },
+      skills: {
+        php: "PHP",
+        laravel: "Laravel",
+        java: "Java",
+        spring: "Spring Boot",
+        mysql: "MySQL",
+        postgresql: "PostgreSQL",
+        mongodb: "MongoDB",
+        redis: "Redis",
+        vue: "Vue.js",
+        javascript: "JavaScript",
+        docker: "Docker",
+        aws: "AWS",
+        git: "Git",
+        nginx: "Nginx",
+        postman: "Postman",
+        agile: "Agile/Scrum",
+        microservices: "Microservices",
+        rest: "REST APIs",
+        bootstrap: "Bootstrap",
+        html: "HTML5",
+        css: "CSS3",
+        apache: "Apache",
+        linux: "Linux",
+        jquery: "jQuery"
       }
     },
     specialization: {
