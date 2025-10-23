@@ -1,184 +1,314 @@
 <template>
-  <div class="welcome">
-    <!-- Sección 1: Presentación Principal -->
-    <section class="welcome-item">
-      <div class="icon">👋</div>
-      <h2>{{ $t('hero.greeting') }}</h2>
-      <h3>{{ $t('hero.title') }}</h3>
-      <p>{{ $t('hero.subtitle') }}</p>
-      <p>{{ $t('hero.experience') }}</p>
-      <div class="hero-actions">
-        <RouterLink to="/projects" class="cta-button">{{ $t('hero.exploreProjects') }}</RouterLink>
-        <RouterLink to="/blog" class="cta-button secondary">{{ $t('hero.readBlog') }}</RouterLink>
+  <div class="hero-container">
+    <!-- CARD PRINCIPAL GRANDE CON EFECTO INTEGRADO -->
+    <section class="hero-main-card">
+      <!-- Contenido de texto -->
+      <div class="hero-text-content">
+        <div class="hero-header">
+          <div class="icon">🚀</div>
+          <h1 class="hero-title">{{ $t('hero.greeting') }}</h1>
+        </div>
+
+        <h2 class="hero-subtitle">{{ $t('hero.title') }}</h2>
+        <p class="hero-description">{{ $t('hero.subtitle') }}</p>
+        <p class="hero-achievement">{{ $t('hero.experience') }}</p>
+
+        <div class="hero-actions">
+          <RouterLink to="/projects" class="cta-button primary">
+            {{ $t('hero.exploreProjects') }}
+          </RouterLink>
+          <a href="#contact" class="cta-button secondary">
+            {{ $t('hero.contactMe') }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Efecto explosión tecnológica -->
+      <div class="tech-explosion-container">
+        <TechExplosionEffect />
       </div>
     </section>
 
-    <!-- Sección 2: Especialización -->
-    <section class="welcome-item">
-      <div class="icon">🚀</div>
-      <h2>{{ $t('specialization.title') }}</h2>
-      <p>{{ $t('specialization.content') }}</p>
-    </section>
-
-    <!-- Sección 3: Logro Destacado -->
-    <section class="welcome-item">
-      <div class="icon">⚡</div>
-      <h2>{{ $t('achievement.title') }}</h2>
-      <p>{{ $t('achievement.content') }}</p>
-    </section>
-
-    <!-- Sección 4: Tecnologías -->
-    <section class="welcome-item">
-      <div class="icon">🛠️</div>
-      <h2>{{ $t('technologies.title') }}</h2>
-      <div class="tech-tags">
-        <span v-for="tech in $t('profile.techList')" :key="tech" class="tech-tag">
-          {{ tech }}
-        </span>
+    <div class="tech-cards-grid">
+      <div class="tech-card">
+        <div class="tech-card-icon">🔌</div>
+        <h3 class="tech-card-title">{{ $t('hero.cards.apis') }}</h3>
+        <p class="tech-card-description">{{ $t('hero.cards.apisDesc') }}</p>
+        <p class="additional-text">
+          {{ $t('hero.cards.apisAdditional') }}
+        </p>
       </div>
-    </section>
+
+      <div class="tech-card">
+        <div class="tech-card-icon">⚡</div>
+        <h3 class="tech-card-title">{{ $t('hero.cards.optimization') }}</h3>
+        <p class="tech-card-description">{{ $t('hero.cards.optimizationDesc') }}</p>
+        <p class="additional-text">
+          {{ $t('hero.cards.optimizationAdditional') }}
+        </p>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-card-icon">🛠️</div>
+        <h3 class="tech-card-title">{{ $t('hero.cards.technologies') }}</h3>
+        <div class="tech-list">
+          <div v-for="tech in $tm('hero.cards.techList')" :key="tech" class="tech-item">
+            <span class="tech-icon">{{ tech.icon }}</span>
+            <span class="tech-text">{{ tech.text }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
+<script setup>
+import { RouterLink } from 'vue-router'
+import TechExplosionEffect from '@/components/ui/TechExplosionEffect.vue'
+</script>
+
 <style scoped>
-.welcome {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+.hero-container {
   max-width: 1400px;
-  /* Aumentar max-width */
   margin: 0 auto;
   padding: 2rem;
-  align-items: start;
-  /* Evitar que items se estiren */
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.welcome-item {
+/* CARD PRINCIPAL CON EFECTO INTEGRADO */
+.hero-main-card {
   background: var(--color-background-soft);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 2rem;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  border-radius: 16px;
+  padding: 3rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
 }
 
-.welcome-item:hover {
+.hero-main-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.hero-text-content {
+  z-index: 2;
 }
 
-.welcome-item h2 {
-  color: var(--color-heading);
-  margin-bottom: 0.5rem;
-  font-size: 1.4rem;
-}
-
-.welcome-item h3 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-}
-
-.welcome-item p {
-  color: var(--color-text);
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
-}
-
-.tech-tags {
+.tech-explosion-container {
+  position: relative;
+  height: 300px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
-.tech-tag {
-  background: var(--color-primary);
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.85rem;
+/* HEADER Y TEXTO */
+.hero-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-header .icon {
+  font-size: 3rem;
+}
+
+.hero-title {
+  color: var(--color-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-subtitle {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  color: var(--color-text);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.hero-achievement {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
   font-weight: 500;
+  margin-bottom: 2rem;
 }
 
+/* BOTONES */
 .hero-actions {
   display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .cta-button {
-  background: var(--color-primary);
-  color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 12px 32px;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
-.cta-button:hover {
+.cta-button.primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.cta-button.primary:hover {
   background: var(--color-primary-dark);
+  transform: translateY(-2px);
 }
 
 .cta-button.secondary {
   background: transparent;
-  border: 2px solid var(--color-primary);
   color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .cta-button.secondary:hover {
   background: var(--color-primary);
   color: white;
+  transform: translateY(-2px);
 }
 
-@media (min-width: 1200px) {
-  .welcome {
-    grid-template-columns: 2fr 1fr 1fr;
-    /* Layout específico para desktop */
-  }
-
-  .welcome-item:first-child {
-    grid-row: span 2;
-    /* La tarjeta principal ocupa más espacio */
-  }
+/* CARDS TÉCNICAS */
+.tech-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .welcome {
+.tech-card {
+  background: var(--color-background-soft);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tech-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-card-title {
+  color: var(--color-heading);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.tech-card-description {
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tech-list {
+  display: flex;
+  flex-direction: column;
+  text-align: left !important;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.tech-item:last-child {
+  border-bottom: none;
+}
+
+.tech-text {
+  flex: 1;
+}
+
+.tech-icon {
+  font-size: 1.1rem;
+  width: 24px;
+  text-align: center;
+}
+
+.additional-text {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-main-card {
     grid-template-columns: 1fr;
-    padding: 1rem;
-    gap: 1rem;
+    text-align: center;
   }
 
-  .welcome-item {
-    padding: 1.5rem;
+  .tech-explosion-container {
+    height: 200px;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 1rem;
+  }
+
+  .hero-main-card {
+    padding: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
   }
 
   .hero-actions {
     flex-direction: column;
+    align-items: center;
   }
 
   .cta-button {
+    width: 100%;
     text-align: center;
   }
-}
 
-@media (max-width: 480px) {
-  .welcome {
-    padding: 0.5rem;
+  .tech-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .tech-tags {
-    justify-content: center;
-  }
 }
 </style>

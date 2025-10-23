@@ -17,24 +17,37 @@ const messages = {
         'Desarrollador Backend con 7+ años especializado en APIs REST, microservicios y optimización de bases de datos. He escalado procesamiento de datos de 30,000 a 150,000 registros por minuto.',
       technologies: 'Tecnologías Principales',
       techList: [
-        'PHP/Laravel',
-        'MySQL/PostgreSQL',
-        'MongoDB',
-        'Redis',
-        'Docker',
-        'AWS',
-        'Java/Spring Boot',
-        'Vue.js',
+        "PHP/Laravel", "Java/Spring Boot", "Vue.js",
+        "MySQL/PostgreSQL", "MongoDB", "Redis",
+        "Docker", "AWS", "APIs REST", "Microservicios"
       ],
       contact: 'Contacto',
     },
     hero: {
-      greeting: '¡Hola! Soy',
-      title: 'Backend Developer Expert',
-      subtitle: 'PHP/Laravel • APIs REST • Optimización de BD',
-      experience: '7+ años escalando aplicaciones y procesando 150,000+ registros/minuto',
-      exploreProjects: 'Ver Proyectos',
-      readBlog: 'Leer Blog',
+      greeting: "Hola, soy Angel Ortega",
+      title: "Backend Developer Senior",
+      subtitle: "PHP/Laravel • APIs REST • Java/Spring Boot • Vue.js",
+      experience: "7+ años diseñando sistemas backend robustos y optimizados",
+      exploreProjects: "Ver Proyectos",
+      contactMe: "Contactar",
+      cards: {
+        apis: "APIs REST",
+        apisDesc: "Diseño e implementación de APIs robustas, documentadas y listas para integración.",
+        apisAdditional: "Desarrollo de APIs RESTful con Laravel y Spring Boot, manejo de webhooks, integración con servicios AWS, y procesamiento eficiente de datos a gran escala.",
+        optimization: "Optimización",
+        optimizationDesc: "Sistemas de alto rendimiento con tiempos de respuesta mínimos y máxima eficiencia.",
+        optimizationAdditional: "Enfoque en optimización de consultas SQL, implementación de sistemas de caché con Redis, y arquitecturas escalables para el procesamiento de grandes volúmenes de datos.",
+        technologies: "Tecnologías",
+        techList: [
+          { icon: "⚡", text: "PHP & Laravel" },
+          { icon: "☕", text: "Java & Spring Boot" },
+          { icon: "📱", text: "Vue.js & JavaScript" },
+          { icon: "🗄️", text: "MySQL & PostgreSQL" },
+          { icon: "🍃", text: "MongoDB & Redis" },
+          { icon: "🐳", text: "Docker & AWS" },
+          { icon: "🔗", text: "Git & APIs REST" }
+        ]
+      }
     },
     specialization: {
       title: 'Especialización Backend',
@@ -167,24 +180,38 @@ const messages = {
         "Backend Developer with 7+ years specialized in REST APIs, microservices and database optimization. I've scaled data processing from 30,000 to 150,000 records per minute.",
       technologies: 'Main Technologies',
       techList: [
-        'PHP/Laravel',
-        'MySQL/PostgreSQL',
-        'MongoDB',
-        'Redis',
-        'Docker',
-        'AWS',
-        'Java/Spring Boot',
-        'Vue.js',
+        "PHP/Laravel", "Java/Spring Boot", "Vue.js",
+        "MySQL/PostgreSQL", "MongoDB", "Redis",
+        "Docker", "AWS", "REST APIs", "Microservices"
       ],
       contact: 'Contact',
     },
     hero: {
-      greeting: "Hi! I'm",
-      title: 'Backend Developer Expert',
-      subtitle: 'PHP/Laravel • REST APIs • Database Optimization',
-      experience: '7+ years scaling applications and processing 150,000+ records/minute',
-      exploreProjects: 'Explore Projects',
-      readBlog: 'Read Blog',
+      greeting: "Hello, I'm Angel Ortega",
+      title: "Senior Backend Developer",
+      subtitle: "PHP/Laravel • APIs REST • Java/Spring Boot • Vue.js",
+      experience: "7+ years designing robust and optimized backend systems",
+      exploreProjects: "View Projects",
+      contactMe: "Contact Me",
+      cards: {
+        apis: "REST APIs",
+        apisDesc: "Design and implementation of robust, documented APIs ready for integration.",
+        apisAdditional: "Development of RESTful APIs with Laravel and Spring Boot, webhooks handling, integration with AWS services, and efficient large-scale data processing.",
+        optimization: "Optimization",
+        optimizationDesc: "High-performance systems with minimal response times and maximum efficiency.",
+        optimizationAdditional: "Focus on SQL query optimization, Redis cache system implementation, and scalable architectures for large-scale data processing.",
+        technologies: "Technologies",
+        techList: [
+          { icon: "⚡", text: "PHP & Laravel" },
+          { icon: "☕", text: "Java & Spring Boot" },
+          { icon: "📱", text: "Vue.js & JavaScript" },
+          { icon: "🗄️", text: "MySQL & PostgreSQL" },
+          { icon: "🍃", text: "MongoDB & Redis" },
+          { icon: "🐳", text: "Docker & AWS" },
+          { icon: "🔗", text: "Git & REST APIs" }
+        ]
+
+      }
     },
     specialization: {
       title: 'Backend Specialization',
