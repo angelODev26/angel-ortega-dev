@@ -21,10 +21,25 @@ const toggleMobileMenu = () => {
   <header class="main-header">
     <div class="header-content-wrapper">
       <div class="logo-group">
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="30" height="30" />
+        <div class="logo-svg">
+          <svg width="36" height="36" viewBox="0 0 36 36">
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00dc82" />
+                <stop offset="100%" stop-color="#00c4cc" />
+              </linearGradient>
+            </defs>
+            <path d="M8 30 L18 6 L28 30 M12 22 L24 22" stroke="url(#grad1)" stroke-width="2.5" fill="none"
+              stroke-linecap="round" />
+            <circle cx="15" cy="15" r="1.5" fill="url(#grad1)" />
+            <circle cx="21" cy="15" r="1.5" fill="url(#grad1)" />
+            <!-- Cachos/picos super pegados y más pronunciados -->
+            <path d="M14.5 7 L12 3 L15 14 L17 9 Z" fill="url(#grad1)" />
+            <path d="M21.5 7 L24 3 L21 14 L19 9 Z" fill="url(#grad1)" />
+          </svg>
+        </div>
         <span class="site-title">ANGEL-ORTEGA-DEV</span>
       </div>
-
       <!-- Botón menú móvil -->
       <button class="mobile-menu-toggle" @click="toggleMobileMenu" :aria-expanded="isMobileMenuOpen"
         aria-label="Toggle menu">
@@ -41,8 +56,8 @@ const toggleMobileMenu = () => {
           <RouterLink to="/projects" @click="isMobileMenuOpen = false">
             {{ t('header.projects') }}
           </RouterLink>
-          <RouterLink to="/blog" @click="isMobileMenuOpen = false">
-            {{ t('header.blog') }}
+          <RouterLink to="/about" @click="isMobileMenuOpen = false">
+            {{ t('header.about') }}
           </RouterLink>
           <RouterLink to="/contact" @click="isMobileMenuOpen = false">
             {{ t('header.contact') }}
@@ -328,5 +343,17 @@ const toggleMobileMenu = () => {
 
 .mobile-menu-toggle[aria-expanded='true'] span:nth-child(3) {
   transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.logo-svg {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo-svg:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
 }
 </style>

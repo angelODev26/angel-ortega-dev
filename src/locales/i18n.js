@@ -6,22 +6,9 @@ const messages = {
     header: {
       home: 'Inicio',
       projects: 'Proyectos',
-      blog: 'Blog',
+      about: 'Sobre Mí',
       contact: 'Contacto',
       downloadCV: 'Descargar CV',
-    },
-    profile: {
-      name: 'Angel Ortega',
-      title: 'Backend Developer Expert - PHP/Laravel',
-      description:
-        'Desarrollador Backend con 7+ años especializado en APIs REST, microservicios y optimización de bases de datos. He escalado procesamiento de datos de 30,000 a 150,000 registros por minuto.',
-      technologies: 'Tecnologías Principales',
-      techList: [
-        "PHP/Laravel", "Java/Spring Boot", "Vue.js",
-        "MySQL/PostgreSQL", "MongoDB", "Redis",
-        "Docker", "AWS", "APIs REST", "Microservicios"
-      ],
-      contact: 'Contacto',
     },
     hero: {
       greeting: "Hola, soy Angel Ortega",
@@ -205,28 +192,51 @@ const messages = {
       copyright: '© {year} Angel Ortega Dev. Todos los derechos reservados.',
       privacy: 'Política de Privacidad',
       terms: 'Términos de Uso',
-    },
+    },// En tus mensajes i18n
+    contact: {
+      title: 'Contact Me',
+      subtitle: '¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad',
+      formTitle: 'Envíame un mensaje',
+      info: {
+        email: {
+          title: 'Email',
+          description: 'Escríbeme directamente'
+        },
+        linkedin: {
+          title: 'LinkedIn',
+          handle: '/in/devangelob',
+          description: 'Conectemos profesionalmente'
+        },
+        github: {
+          title: 'GitHub',
+          handle: '@angelODev26',
+          description: 'Explora mis proyectos'
+        }
+      },
+      form: {
+        name: 'Nombre',
+        namePlaceholder: 'Tu nombre completo',
+        email: 'Email',
+        emailPlaceholder: 'tu.email@ejemplo.com',
+        subject: 'Asunto',
+        subjectPlaceholder: '¿De qué quieres hablar?',
+        message: 'Mensaje',
+        messagePlaceholder: 'Cuéntame sobre tu proyecto...',
+        submit: 'Enviar mensaje',
+        sending: 'Enviando...',
+        success: '¡Mensaje enviado! Te responderé pronto.',
+        error: 'Error al enviar. Intenta nuevamente.'
+      }
+    }
+
   },
   en: {
     header: {
       home: 'Home',
       projects: 'Projects',
-      blog: 'Blog',
+      about: 'About Me',
       contact: 'Contact',
       downloadCV: 'Download CV',
-    },
-    profile: {
-      name: 'Angel Ortega',
-      title: 'Backend Developer Expert - PHP/Laravel',
-      description:
-        "Backend Developer with 7+ years specialized in REST APIs, microservices and database optimization. I've scaled data processing from 30,000 to 150,000 records per minute.",
-      technologies: 'Main Technologies',
-      techList: [
-        "PHP/Laravel", "Java/Spring Boot", "Vue.js",
-        "MySQL/PostgreSQL", "MongoDB", "Redis",
-        "Docker", "AWS", "REST APIs", "Microservices"
-      ],
-      contact: 'Contact',
     },
     hero: {
       greeting: "Hello, I'm Angel Ortega",
@@ -408,6 +418,41 @@ const messages = {
       privacy: 'Privacy Policy',
       terms: 'Terms of Use',
     },
+    contact: {
+      title: 'Contact Me',
+      subtitle: 'Do you have a project in mind? Let\'s talk and make it happen',
+      formTitle: 'Send me a message',
+      info: {
+        email: {
+          title: 'Email',
+          description: 'Write to me directly'
+        },
+        linkedin: {
+          title: 'LinkedIn',
+          handle: '/in/devangelob',
+          description: 'Let\'s connect professionally'
+        },
+        github: {
+          title: 'GitHub',
+          handle: '@angelODev26',
+          description: 'Explore my projects'
+        }
+      },
+      form: {
+        name: 'Name',
+        namePlaceholder: 'Your full name',
+        email: 'Email',
+        emailPlaceholder: 'your.email@example.com',
+        subject: 'Subject',
+        subjectPlaceholder: 'What do you want to talk about?',
+        message: 'Message',
+        messagePlaceholder: 'Tell me about your project...',
+        submit: 'Send message',
+        sending: 'Sending...',
+        success: 'Message sent! I\'ll get back to you soon.',
+        error: 'Error sending. Please try again.'
+      }
+    }
   },
 }
 
