@@ -209,7 +209,6 @@ const messages = {
         },
         github: {
           title: 'GitHub',
-          handle: '@angelODev26',
           description: 'Explora mis proyectos'
         }
       },
@@ -217,15 +216,19 @@ const messages = {
         name: 'Nombre',
         namePlaceholder: 'Tu nombre completo',
         email: 'Email',
-        emailPlaceholder: 'tu.email@ejemplo.com',
         subject: 'Asunto',
         subjectPlaceholder: '¿De qué quieres hablar?',
         message: 'Mensaje',
         messagePlaceholder: 'Cuéntame sobre tu proyecto...',
         submit: 'Enviar mensaje',
         sending: 'Enviando...',
+        cancel: 'Cancelar',
         success: '¡Mensaje enviado! Te responderé pronto.',
-        error: 'Error al enviar. Intenta nuevamente.'
+        error: 'Error al enviar. Intenta nuevamente.',
+        successTitle: "¡Mensaje enviado!",
+        successMessage: "Te responderé lo antes posible.",
+        errorTitle: "Error al enviar",
+        close: "Cerrar"
       }
     }
 
@@ -434,7 +437,6 @@ const messages = {
         },
         github: {
           title: 'GitHub',
-          handle: '@angelODev26',
           description: 'Explore my projects'
         }
       },
@@ -442,15 +444,19 @@ const messages = {
         name: 'Name',
         namePlaceholder: 'Your full name',
         email: 'Email',
-        emailPlaceholder: 'your.email@example.com',
         subject: 'Subject',
         subjectPlaceholder: 'What do you want to talk about?',
         message: 'Message',
         messagePlaceholder: 'Tell me about your project...',
         submit: 'Send message',
         sending: 'Sending...',
+        cancel: 'Cancel',
         success: 'Message sent! I\'ll get back to you soon.',
-        error: 'Error sending. Please try again.'
+        error: 'Error sending. Please try again.',
+        successTitle: "Message sent!",
+        successMessage: "I\'ll get back to you soon.",
+        errorTitle: "Error sending.",
+        close: "Close"
       }
     }
   },

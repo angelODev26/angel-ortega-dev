@@ -24,9 +24,9 @@
           <RouterLink to="/projects" class="cta-button primary">
             {{ $t('hero.exploreProjects') }}
           </RouterLink>
-          <a href="#contact" class="cta-button secondary">
+          <button @click="openContactModal" class="cta-button secondary">
             {{ $t('hero.contactMe') }}
-          </a>
+          </button>
         </div>
       </div>
 
@@ -75,12 +75,18 @@
         </div>
       </div>
     </div>
+    <!-- Actualiza el ContactModal en HeroSection: -->
+    <ContactModal :is-open="showContactModal" :is-submitting="isSubmitting" :success="success" :error="error"
+      @close="handleModalClose" @submit="handleContactSubmit" @reset="handleModalReset" />
   </div>
 </template>
 
 <script setup>
 import { RouterLink } from 'vue-router'
 import TechExplosionEffect from '@/components/ui/TechExplosionEffect.vue'
+import ContactModal from '@/components/ui/ContactModal.vue'
+import { ref } from 'vue'
+import { useContact } from '@/composables/useContact'
 
 const technologiesList = [
   { name: 'PHP & Laravel', icon1: 'devicon-php-plain', icon2: 'devicon-laravel-plain' },
@@ -91,6 +97,40 @@ const technologiesList = [
   { name: 'Docker & AWS', icon1: 'devicon-docker-plain', icon2: 'devicon-amazonwebservices-plain' },
   { name: 'Git & APIs REST', icon1: 'devicon-git-plain', icon2: 'devicon-nodejs-plain' }
 ]
+
+const { submitContactForm, isSubmitting, error, success, resetState } = useContact()
+
+const showContactModal = ref(false)
+
+const openContactModal = () => {
+  showContactModal.value = true
+}
+
+const handleContactSubmit = async (formData) => {
+  console.log('📝 Enviando formulario:', formData)
+
+  const result = await submitContactForm(formData)
+
+  if (result.success) {
+    console.log('✅ Mensaje enviado con éxito')
+    // Cerrar modal después del éxito
+  } else {
+    console.error('❌ Error enviando mensaje:', result.error)
+  }
+}
+
+const handleModalClose = () => {
+  showContactModal.value = false
+}
+
+const handleModalReset = () => {
+  resetState()
+}
+
+const handleContactError = (error) => {
+  console.error('Error en contacto:', error)
+  // Aquí puedes agregar notificaciones de error
+}
 </script>
 
 <style scoped>

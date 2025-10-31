@@ -47,7 +47,7 @@
                         </div>
                         <div class="info-content">
                             <h3>{{ $t('contact.info.github.title') }}</h3>
-                            <span>{{ $t('contact.info.github.handle') }}</span>
+                            <span>@angelODev26</span>
                             &nbsp; <small>{{ $t('contact.info.github.description') }}</small>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label for="email">{{ $t('contact.form.email') }}</label>
                             <input id="email" v-model="form.email" type="email" required
-                                :placeholder="$t('contact.form.emailPlaceholder')">
+                                placeholder="example@example.com">
                         </div>
 
                         <div class="form-group">
@@ -85,8 +85,8 @@
                                 :placeholder="$t('contact.form.messagePlaceholder')"></textarea>
                         </div>
 
-                        <button type="submit" class="submit-btn" :disabled="loading">
-                            {{ loading ? $t('contact.form.sending') : $t('contact.form.submit') }}
+                        <button type="submit" class="submit-btn" :disabled="isSubmitting">
+                            {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.submit') }}
                         </button>
                     </form>
                 </div>
@@ -98,8 +98,11 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useContact } from '@/composables/useContact'
 
 const { t } = useI18n()
+const { submitContactForm, isSubmitting, error, success, resetState } = useContact()
+
 
 const form = reactive({
     name: '',
@@ -109,7 +112,6 @@ const form = reactive({
 })
 
 const honeypot = ref('')
-const loading = ref(false)
 
 const openLink = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer')
@@ -141,36 +143,21 @@ const handleSubmit = async () => {
         return
     }
 
-    loading.value = true
-
     try {
-        // Reemplaza esta URL con la que te da Formspree
-        const response = await fetch('https://formspree.io/f/xqagdgve', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: form.name,
-                email: form.email,
-                subject: form.subject,
-                message: form.message,
-                _replyto: form.email, // Para que te respondan directo
-            })
-        })
+        // ✅ CORREGIDO: submitContactForm ya retorna un objeto con success
+        const result = await submitContactForm(form)
 
-        if (response.ok) {
+        if (result.success) {
             alert(t('contact.form.success'))
             // Reset form
             Object.keys(form).forEach(key => form[key] = '')
+            resetState()
         } else {
-            throw new Error('Error en el envío')
+            throw new Error(result.error || 'Error en el envío')
         }
     } catch (error) {
         console.error('Error:', error)
         alert(t('contact.form.error'))
-    } finally {
-        loading.value = false
     }
 }
 
