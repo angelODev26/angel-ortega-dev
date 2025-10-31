@@ -14,7 +14,6 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  // ✅ AGREGAR ESTA SECCIÓN PARA EL PROXY
   server: {
     proxy: {
       '/api': {
@@ -22,11 +21,17 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
         secure: false,
-        configure: (proxy, options) => {
-          // Logging opcional para debug
-          proxy.on('proxyReq', (proxyReq, req, res) => {
-            console.log('🔁 Proxy Request:', req.method, req.url)
-          })
+      }
+    }
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    chunkSizeWarningLimit: 1600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['vue', 'vue-router', 'vue-i18n'],
         }
       }
     }

@@ -8,8 +8,8 @@ const isMobileMenuOpen = ref(false)
 
 // ✅ CV por idioma con verificación
 const cvUrls = {
-  es: '/cv-angel-obando-es.pdf',
-  en: '/cv-angel-obando-en.pdf'
+  es: '/cv-angel-ortega-es.pdf',
+  en: '/cv-angel-ortega-en.pdf'
 }
 
 const cvUrl = computed(() => cvUrls[locale.value])
