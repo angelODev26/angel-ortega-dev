@@ -1,19 +1,60 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { ref } from 'vue' // ¡IMPORTANTE! Faltaba esta importación
+import { ref, computed } from 'vue'
 
 const { t, locale } = useI18n()
+const isMobileMenuOpen = ref(false)
 
-const changeLanguage = (lang) => {
-  locale.value = lang
+// ✅ CV por idioma con verificación
+const cvUrls = {
+  es: '/cv-angel-obando-es.pdf',
+  en: '/cv-angel-obando-en.pdf'
 }
 
-// Menú responsive - CORREGIDO con ref importado
-const isMobileMenuOpen = ref(false)
+const cvUrl = computed(() => cvUrls[locale.value])
+
+// ✅ Función de descarga mejorada
+const downloadCV = async (event) => {
+  event.preventDefault() // Prevenir comportamiento por defecto
+
+  try {
+    console.log(`📄 Intentando descargar CV: ${cvUrl.value}`)
+
+    // Verificar si el archivo existe
+    const response = await fetch(cvUrl.value, { method: 'HEAD' })
+
+    if (!response.ok) {
+      throw new Error(`Archivo no encontrado: ${cvUrl.value}`)
+    }
+
+    // ✅ Método confiable para descarga
+    const link = document.createElement('a')
+    link.href = cvUrl.value
+    link.download = cvUrl.value.split('/').pop() // Nombre del archivo
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+
+    console.log('✅ CV descargado exitosamente')
+
+    // Opcional: Mostrar notificación de éxito
+    // alert('CV descargado exitosamente')
+
+  } catch (error) {
+    console.error('❌ Error descargando CV:', error)
+
+    // Opcional: Mostrar notificación de error
+    alert('Error al descargar el CV. Por favor, intenta más tarde.')
+  }
+}
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const changeLanguage = (lang) => {
+  locale.value = lang
 }
 </script>
 
@@ -33,13 +74,13 @@ const toggleMobileMenu = () => {
               stroke-linecap="round" />
             <circle cx="15" cy="15" r="1.5" fill="url(#grad1)" />
             <circle cx="21" cy="15" r="1.5" fill="url(#grad1)" />
-            <!-- Cachos/picos super pegados y más pronunciados -->
             <path d="M14.5 7 L12 3 L15 14 L17 9 Z" fill="url(#grad1)" />
             <path d="M21.5 7 L24 3 L21 14 L19 9 Z" fill="url(#grad1)" />
           </svg>
         </div>
         <span class="site-title">ANGEL-ORTEGA-DEV</span>
       </div>
+
       <!-- Botón menú móvil -->
       <button class="mobile-menu-toggle" @click="toggleMobileMenu" :aria-expanded="isMobileMenuOpen"
         aria-label="Toggle menu">
@@ -65,7 +106,7 @@ const toggleMobileMenu = () => {
         </nav>
 
         <div class="controls-end-group">
-          <!-- SOLO UN language selector debe estar aquí -->
+          <!-- Language selector -->
           <div class="language-selector-wrapper">
             <select :value="locale" @change="changeLanguage($event.target.value)" class="language-selector">
               <option value="es">ES</option>
@@ -73,7 +114,7 @@ const toggleMobileMenu = () => {
             </select>
           </div>
 
-          <a href="/cv/download" class="cta-button">
+          <a :href="cvUrl" class="cta-button" @click="downloadCV" :download="cvUrl.split('/').pop()">
             {{ t('header.downloadCV') }}
           </a>
         </div>
