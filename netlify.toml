@@ -1,10 +1,10 @@
 [build]
-  command = "rm -rf node_modules && npm install && npm run build"
+  command = "npm install && npx vite build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-  NODE_ENV = "production"
+  NODE_ENV = "development"  # ¡IMPORTANTE! Para instalar devDependencies
 
 # Redirecciones para SPA - más eficiente
 [[redirects]]
