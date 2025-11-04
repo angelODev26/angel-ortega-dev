@@ -277,7 +277,7 @@ const messages = {
           <li>El formulario de contacto disponible en el Sitio</li>
           <li>Mi perfil de LinkedIn en /in/devangelob</li>
         </ul>
-        <p><strong>Fecha de última actualización:</strong> 1 de Noviembre de 2024</p>
+        <p><strong>Fecha de última actualización:</strong> 04 de Noviembre de 2025</p>
       `
         }
       }
@@ -353,7 +353,7 @@ const messages = {
           <li>El formulario de contacto disponible en el Sitio</li>
           <li>Mi perfil de LinkedIn en /in/devangelob</li>
         </ul>
-        <p><strong>Fecha de última actualización:</strong> 1 de Noviembre de 2024</p>
+        <p><strong>Fecha de última actualización:</strong> 04 de Noviembre de 2025</p>
       `
         }
       }
@@ -669,7 +669,7 @@ const messages = {
           <li>The contact form available on the Site</li>
           <li>My LinkedIn profile at /in/devangelob</li>
         </ul>
-        <p><strong>Last update date:</strong> November 1, 2024</p>
+        <p><strong>Last update date:</strong> November 04, 2025</p>
       `
         }
       }
@@ -745,7 +745,7 @@ const messages = {
           <li>The contact form available on the Site</li>
           <li>My LinkedIn profile at /in/devangelob</li>
         </ul>
-        <p><strong>Last update date:</strong> November 1, 2024</p>
+        <p><strong>Last update date:</strong> November 04, 2025</p>
       `
         }
       }
