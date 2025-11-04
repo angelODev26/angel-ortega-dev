@@ -1,5 +1,5 @@
 <template>
-  <LegalDocument :header="'terms.header'" :last-updated="'20245-11-04'" :sections="sections" />
+  <LegalDocument :header="'terms.header'" :last-updated="'2025-11-04'" :sections="sections" />
 </template>
 
 <script>
