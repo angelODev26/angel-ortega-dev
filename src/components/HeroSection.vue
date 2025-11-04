@@ -127,10 +127,7 @@ const handleModalReset = () => {
   resetState()
 }
 
-const handleContactError = (error) => {
-  console.error('Error en contacto:', error)
-  // Aquí puedes agregar notificaciones de error
-}
+
 </script>
 
 <style scoped>
