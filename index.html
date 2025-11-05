@@ -1,14 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <title>Angel Ortega DEV</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angel Ortega - Backend Developer Senior | PHP/Laravel • Java/Spring Boot</title>
+    <meta
+      name="description"
+      content="Backend Developer Senior - PHP/Laravel, Java/Spring Boot, Vue.js - 7+ años experiencia diseñando sistemas backend robustos y optimizados"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://angel-ortega-dev.netlify.app/" />
+    <meta property="og:title" content="Angel Ortega - Backend Developer Senior" />
+    <meta
+      property="og:description"
+      content="PHP/Laravel • Java/Spring Boot • Vue.js - 7+ años experiencia diseñando sistemas backend robustos"
+    />
+    <meta property="og:image" content="<%= BASE_URL %>images/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://angel-ortega-dev.netlify.app/" />
+    <meta property="twitter:title" content="Angel Ortega - Backend Developer Senior" />
+    <meta
+      property="twitter:description"
+      content="PHP/Laravel • Java/Spring Boot • Vue.js - 7+ años experiencia"
+    />
+    <meta property="twitter:image" content="<%= BASE_URL %>images/og-image.jpg" />
+
+    <!-- Keywords adicionales para SEO -->
+    <meta
+      name="keywords"
+      content="backend developer, PHP, Laravel, Java, Spring Boot, Vue.js, API REST, MySQL, PostgreSQL, MongoDB, Docker, AWS"
+    />
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Angel Ortega",
+        "jobTitle": "Senior Backend Developer",
+        "url": "https://angel-ortega-dev.netlify.app",
+        "sameAs": ["https://github.com/angelODev26", "https://linkedin.com/in/devangelob"],
+        "knowsAbout": [
+          "PHP",
+          "Laravel",
+          "Java",
+          "Spring Boot",
+          "Vue.js",
+          "MySQL",
+          "PostgreSQL",
+          "MongoDB",
+          "Docker",
+          "AWS"
+        ]
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      <strong
+        >We're sorry but this site doesn't work properly without JavaScript enabled. Please enable
+        it to continue.</strong
+      >
+    </noscript>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
+  <style>
+    /* Estilos mínimos para renderizado inmediato */
+    .header-placeholder {
+      height: 80px;
+    }
+    .loading-skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    @keyframes loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+  </style>
 </html>

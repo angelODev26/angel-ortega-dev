@@ -30,9 +30,23 @@
         </div>
       </div>
 
-      <!-- Efecto explosión tecnológica -->
+      <!-- Efecto explosión tecnológica con lazy loading -->
       <div class="tech-explosion-container">
-        <TechExplosionEffect />
+        <Suspense>
+          <template #default>
+            <TechExplosionEffect />
+          </template>
+          <template #fallback>
+            <div class="tech-explosion-fallback">
+              <div class="fallback-animation">
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+                <div class="pulse-dot"></div>
+              </div>
+              <p>Cargando efecto...</p>
+            </div>
+          </template>
+        </Suspense>
       </div>
     </section>
 
@@ -75,7 +89,8 @@
         </div>
       </div>
     </div>
-    <!-- Actualiza el ContactModal en HeroSection: -->
+
+    <!-- ContactModal -->
     <ContactModal :is-open="showContactModal" :is-submitting="isSubmitting" :success="success" :error="error"
       @close="handleModalClose" @submit="handleContactSubmit" @reset="handleModalReset" />
   </div>
@@ -83,10 +98,18 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
-import TechExplosionEffect from '@/components/ui/TechExplosionEffect.vue'
-import ContactModal from '@/components/ui/ContactModal.vue'
-import { ref } from 'vue'
+import { ref, defineAsyncComponent } from 'vue'
 import { useContact } from '@/composables/useContact'
+
+// Lazy loading para TechExplosionEffect
+const TechExplosionEffect = defineAsyncComponent(() =>
+  import('@/components/ui/TechExplosionEffect.vue')
+)
+
+// Lazy loading para ContactModal (si es pesado)
+const ContactModal = defineAsyncComponent(() =>
+  import('@/components/ui/ContactModal.vue')
+)
 
 const technologiesList = [
   { name: 'PHP & Laravel', icon1: 'devicon-php-plain', icon2: 'devicon-laravel-plain' },
@@ -126,8 +149,6 @@ const handleModalClose = () => {
 const handleModalReset = () => {
   resetState()
 }
-
-
 </script>
 
 <style scoped>
@@ -169,6 +190,51 @@ const handleModalReset = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Fallback para cuando carga el efecto */
+.tech-explosion-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.fallback-animation {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pulse-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.pulse-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.pulse-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
 }
 
 /* HEADER Y TEXTO */
@@ -340,7 +406,6 @@ const handleModalReset = () => {
   padding-left: 0.5rem;
 }
 
-
 .additional-text {
   color: var(--color-text);
   font-size: 0.95rem;
@@ -406,6 +471,5 @@ const handleModalReset = () => {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-
 }
 </style>

@@ -1,0 +1,14 @@
+<svg width="36" height="36" viewBox="0 0 36 36">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#00dc82" />
+        <stop offset="100%" stop-color="#00c4cc" />
+        </linearGradient>
+    </defs>
+    <path d="M8 30 L18 6 L28 30 M12 22 L24 22" stroke="url(#grad1)" stroke-width="2.5" fill="none"
+        stroke-linecap="round" />
+    <circle cx="15" cy="15" r="1.5" fill="url(#grad1)" />
+    <circle cx="21" cy="15" r="1.5" fill="url(#grad1)" />
+    <path d="M14.5 7 L12 3 L15 14 L17 9 Z" fill="url(#grad1)" />
+    <path d="M21.5 7 L24 3 L21 14 L19 9 Z" fill="url(#grad1)" />
+</svg>

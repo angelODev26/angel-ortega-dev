@@ -1,26 +1,26 @@
-/* src/assets/base.css - REEMPLAZAR TODO EL CONTENIDO */
+/* src/assets/base.css - VERSIÓN OPTIMIZADA */
 /* Paleta de colores profesional azul */
 :root {
   /* Colores principales - Azules profesionales */
-  --color-primary: #17C2E5;
-  --color-primary-dark: #07586E;
-  --color-primary-light: #40AEC6;
-  --color-secondary: #276C7D;
-  
+  --color-primary: #17c2e5;
+  --color-primary-dark: #07586e;
+  --color-primary-light: #40aec6;
+  --color-secondary: #276c7d;
+
   /* Colores de fondo */
-  --color-bg-dark: #1F2227;
+  --color-bg-dark: #1f2227;
   --color-bg-card: #212329;
-  --color-bg-soft: #2D3748;
-  
+  --color-bg-soft: #2d3748;
+
   /* Colores de texto */
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #CDCDD4;
-  --color-text-muted: #A0AEC0;
-  
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cdcdd4;
+  --color-text-muted: #a0aec0;
+
   /* Bordes */
-  --color-border: #07586E;
-  --color-border-light: #276C7D;
-  --color-border-hover: #17C2E5;
+  --color-border: #07586e;
+  --color-border-light: #276c7d;
+  --color-border-hover: #17c2e5;
 }
 
 /* Semantic color variables */
@@ -38,7 +38,9 @@
   --section-gap: 160px;
 }
 
-/* Reset y base styles */
+/* ========== OPTIMIZACIONES CRÍTICAS ========== */
+
+/* Reset y base styles OPTIMIZADOS */
 *,
 *::before,
 *::after {
@@ -47,17 +49,143 @@
   font-weight: normal;
 }
 
+/* CSS CRÍTICO - Se renderiza inmediatamente */
 body {
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: 'Space Mono', monospace;
+  font-family:
+    'Space Mono',
+    monospace,
+    system-ui,
+    -apple-system,
+    sans-serif; /* Fallback crítico */
   font-size: 15px;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizeSpeed; /* Cambiado a optimizeSpeed para performance */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Optimización de fuentes - EVITA FOIT (Flash of Invisible Text) */
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap; /* ¡CRÍTICO! Permite texto visible inmediatamente */
+  src: url('/fonts/space-mono.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/space-mono-bold.woff2') format('woff2');
+}
+
+/* Estilos para loading states - Mejora perceived performance */
+.app-loading {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.app-loaded {
+  opacity: 1;
+}
+
+/* Smooth scrolling solo para usuarios que no prefieren reducido */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Mejoras de accesibilidad y performance */
+:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Optimización de imágenes por defecto */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mejora de rendimiento para transformaciones y animaciones */
+.optimized-transform {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Clases utilitarias para performance */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* No dark mode override - mantenemos nuestra paleta */
+
+/* ========== MEDIA QUERIES MOBILE-FIRST ========== */
+
+/* Base móvil (ya está implícito) */
+
+/* Tablet */
+@media (min-width: 768px) {
+  body {
+    font-size: 16px; /* Ligeramente más grande en tablets */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  body {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1280px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+/* ========== OPTIMIZACIONES ESPECÍFICAS PARA MÉTRICAS ========== */
+
+/* Mejora CLS (Cumulative Layout Shift) */
+.header-placeholder {
+  height: 80px; /* Altura fija del header */
+}
+
+/* Optimización para LCP (Largest Contentful Paint) */
+.hero-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9; /* Previene layout shift */
+}
+
+/* Mejora FID (First Input Delay) */
+button,
+a {
+  touch-action: manipulation; /* Mejora respuesta táctil */
+}
+
+/* Reduce repaints y reflows */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transform: translateZ(0); /* Crea layer composite */
+}

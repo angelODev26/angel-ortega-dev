@@ -31,18 +31,36 @@
       </div>
 
       <div class="projects-grid">
-        <ProjectCard v-for="project in filteredProjects" :key="project.id" :project="project" />
+        <!-- Componente con lazy loading -->
+        <Suspense>
+          <template #default>
+            <ProjectCard v-for="project in filteredProjects" :key="project.id" :project="project" />
+          </template>
+          <template #fallback>
+            <div class="loading-cards">
+              <div v-for="n in 3" :key="n" class="project-card-skeleton">
+                <div class="skeleton-header"></div>
+                <div class="skeleton-content"></div>
+                <div class="skeleton-content"></div>
+              </div>
+            </div>
+          </template>
+        </Suspense>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import ProjectCard from '@/components/ui/ProjectCard.vue'
+import { ref, computed, defineAsyncComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+
+// Lazy loading del componente ProjectCard
+const ProjectCard = defineAsyncComponent(() =>
+  import('@/components/ui/ProjectCard.vue')
+)
 
 // Traducciones para filtros
 const statusFilters = computed(() => [
@@ -259,6 +277,53 @@ const filteredProjects = computed(() => {
   gap: 2rem;
 }
 
+/* Estilos para el skeleton loading */
+.loading-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.project-card-skeleton {
+  background: var(--color-background-soft);
+  border-radius: 12px;
+  padding: 2rem;
+  animation: pulse 2s infinite;
+}
+
+.skeleton-header {
+  height: 20px;
+  background: var(--color-bg-soft);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.skeleton-content {
+  height: 16px;
+  background: var(--color-bg-soft);
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-content:last-child {
+  width: 70%;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 768px) {
   .projects-view {
     padding: 100px 1rem 1rem;
@@ -281,7 +346,8 @@ const filteredProjects = computed(() => {
     font-size: 0.9rem;
   }
 
-  .projects-grid {
+  .projects-grid,
+  .loading-cards {
     grid-template-columns: 1fr;
   }
 }
