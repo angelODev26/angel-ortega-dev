@@ -43,7 +43,6 @@ const messages = {
       professionalSummaryText: "Desarrollador Backend PHP/Laravel con más de 7 años de experiencia diseñando y optimizando APIs REST y microservicios en entornos de alto volumen de datos. Experto en MySQL y PostgreSQL para modelado de esquemas, optimización de consultas e índices, y corrección de datos 'en caliente'. He logrado analizar cientos de miles de registros para detectar errores y, mediante históricos y análisis, corregirlos eficazmente. Desarrollé herramientas que procesaron y validaron hasta 150 000 registros en menos de 1 minuto. Competente en desarrollo de jobs en Laravel, APIs, controladores, validadores, seeders, comandos, colas (MongoDB, Redis, SQS) y webhooks. Experiencia en contenedorización con Docker, gestión de versiones con Git, almacenamiento en AWS S3 e integración con SendGrid/Masiv. Trabajo bajo metodologías Agile/Scrum y documentando APIs con Postman.",
       workExperience: "Experiencia Laboral",
       technicalSkills: "Habilidades Técnicas",
-      technicalSkills: "Habilidades Técnicas",
       skillCategories: {
         backend: "Backend",
         databases: "Bases de Datos",
@@ -77,11 +76,6 @@ const messages = {
         linux: "Linux",
         jquery: "jQuery"
       }
-    },
-    specialization: {
-      title: 'Especialización Backend',
-      content:
-        'APIs REST, Microservicios, Optimización de Bases de Datos, Procesamiento Masivo de Datos',
     },
     achievement: {
       title: 'Logro Destacado',
@@ -163,40 +157,150 @@ const messages = {
         },
       ],
     },
+    // SECCIÓN PROJECTS COMPLETA - AGREGADA
     projects: {
-      title: 'Proyectos Destacados',
-      relax: {
-        title: 'Relax - Plataforma de Envíos Masivos',
-        description:
-          'Herramienta de envío masivo de comunicaciones por email y SMS con procesamiento de 150,000+ registros/minuto.',
-        technologies: ['PHP (Laravel)', 'MongoDB', 'Docker', 'Redis', 'SQS', 'Webhooks'],
-        achievements: [
-          'Reducción de tiempo de procesamiento de horas a minutos',
-          'Escalado a 150,000 registros por job',
-          'Implementación de colas y microservicios',
+      pageTitle: 'Mis Proyectos',
+      pageSubtitle: 'Una selección de mis trabajos más recientes y destacados',
+      filters: {
+        status: 'Estado',
+        category: 'Categoría',
+        all: 'Todos',
+        completed: 'Completados',
+        inProgress: 'En Progreso',
+        paused: 'Pausados',
+        frontend: 'Frontend',
+        backend: 'Backend',
+        fullstack: 'Fullstack'
+      },
+      sections: {
+        technologies: 'Tecnologías',
+        technicalDetails: 'Detalles Técnicos',
+        challenges: 'Desafíos',
+        features: 'Características'
+      },
+      details: {
+        architecture: 'Arquitectura',
+        methodology: 'Metodología',
+        database: 'Base de Datos',
+        security: 'Seguridad',
+        testing: 'Testing',
+        communication: 'Comunicación',
+        deployment: 'Despliegue',
+        monitoring: 'Monitoreo',
+        framework: 'Framework',
+        buildTool: 'Herramienta de Build',
+        performance: 'Rendimiento',
+        mobile: 'Móvil',
+        backend: 'Backend'
+      },
+      buttons: {
+        viewCode: 'Ver Código',
+        viewDemo: 'Ver Demo',
+        pausedProject: 'Proyecto Pausado',
+        backendOnly: 'Solo Backend'
+      },
+      status: {
+        completed: 'Completado',
+        inProgress: 'En Progreso',
+        paused: 'Pausado'
+      },
+      categories: {
+        frontend: 'Frontend',
+        backend: 'Backend',
+        fullstack: 'Fullstack'
+      }
+    },
+    projectsList: {
+      athletecore: {
+        title: "AthleteCore API",
+        description: "Backend para sistema de gestión de rendimiento deportivo. Arquitectura escalable diseñada para múltiples deportes, comenzando con natación.",
+        features: [
+          "API RESTful con documentación Swagger",
+          "Sistema de autenticación JWT robusto",
+          "Arquitectura genérica para múltiples deportes",
+          "Base de datos relacional con PostgreSQL",
+          "Configuración Docker para desarrollo",
+          "Patrón Repository con Spring Data JPA"
         ],
+        challenges: [
+          "Configuración de Spring Security en entorno WSL",
+          "Resolución de conflictos de JDK con sdkman",
+          "Implementación de auditoría y soft delete",
+          "Debugging profundo de configuración CORS y autenticación"
+        ]
+      },
+      lms: {
+        title: "Learning Management System (LMS)",
+        description: "Sistema de gestión de aprendizaje con arquitectura de microservicios. Backend avanzado con focus en escalabilidad y mantenibilidad.",
+        features: [
+          "Arquitectura de microservicios desacoplada",
+          "API Gateway con Spring Cloud",
+          "Base de datos distribuida",
+          "Sistema de notificaciones en tiempo real",
+          "Servicio de autenticación independiente"
+        ],
+        challenges: [
+          "Diseño de comunicación entre microservicios",
+          "Manejo de consistencia de datos distribuidos",
+          "Implementación de circuit breaker patterns"
+        ]
+      },
+      portfolio: {
+        title: "Portfolio Personal",
+        description: "Aplicación frontend moderna que muestra mis habilidades técnicas y proyectos. Diseñada con mejores prácticas de UX y performance.",
+        features: [
+          "Diseño 100% responsive (mobile-first)",
+          "Sistema multi-idioma (ES/EN)",
+          "Formulario de contacto funcional",
+          "Optimización SEO y meta tags",
+          "Despliegue continuo con Netlify"
+        ],
+        challenges: [
+          "Configuración de proxy para desarrollo local",
+          "Implementación de multi-idioma con Vue I18n",
+          "Optimización de build para producción",
+          "Integración con Formspree y manejo de CORS"
+        ]
+      },
+      relax: {
+        title: "Relax - Plataforma de Envíos Masivos",
+        description: "Herramienta de envío masivo de comunicaciones por email y SMS con procesamiento de 150,000+ registros/minuto.",
+        features: [
+          "Procesamiento de 150,000+ registros por minuto",
+          "Envíos masivos de email y SMS",
+          "Sistema de colas con Redis y SQS",
+          "Webhooks para notificaciones en tiempo real"
+        ],
+        challenges: [
+          "Escalado de procesamiento de datos masivos",
+          "Optimización de tiempos de envío",
+          "Manejo de colas y concurrencia"
+        ]
       },
       magnum: {
-        title: 'Magnum - Sistema de Contabilidad',
-        description:
-          'Sistema de contabilidad empresarial con módulo nativo para pedidos en restaurantes y app Android.',
-        technologies: ['Java', 'Android Studio', 'SQLite', 'MySQL', 'PHP'],
-        achievements: [
-          'App Android nativa para gestión de pedidos',
-          'Integración completa con sistema principal',
-          'Almacenamiento local para configuraciones',
+        title: "Magnum - Sistema de Contabilidad",
+        description: "Sistema de contabilidad empresarial con módulo nativo para pedidos en restaurantes y app Android.",
+        features: [
+          "Sistema de contabilidad completo",
+          "App Android para gestión de pedidos",
+          "Sincronización en tiempo real",
+          "Reportes y analytics"
         ],
-      },
+        challenges: [
+          "Desarrollo de app Android nativa",
+          "Integración con sistema legacy",
+          "Sincronización de datos offline/online"
+        ]
+      }
     },
     footer: {
       copyright: '© {year} Angel Ortega Dev. Todos los derechos reservados.',
       privacy: 'Política de Privacidad',
       terms: 'Términos de Uso',
-    }, legal: {
+    },
+    legal: {
       lastUpdated: 'Última actualización',
     },
-    // En tu i18n.js - Reemplaza los placeholders con esto:
-
     terms: {
       header: 'Términos de Uso',
       sections: {
@@ -440,7 +544,6 @@ const messages = {
       professionalSummaryText: "PHP/Laravel Backend Developer with over 7 years of experience designing and optimizing REST APIs and microservices in high-volume data environments. Expert in MySQL and PostgreSQL for schema modeling, query and index optimization, and 'hot' data correction. I have successfully analyzed hundreds of thousands of records to detect errors and, through historical data and analysis, corrected them effectively. Developed tools that processed and validated up to 150,000 records in less than 1 minute. Proficient in Laravel job development, APIs, controllers, validators, seeders, commands, queues (MongoDB, Redis, SQS) and webhooks. Experience with Docker containerization, Git version control, AWS S3 storage, and SendGrid/Masiv integration. Work under Agile/Scrum methodologies and API documentation with Postman.",
       workExperience: "Work Experience",
       technicalSkills: "Technical Skills",
-      technicalSkills: "Technical Skills",
       skillCategories: {
         backend: "Backend",
         databases: "Databases",
@@ -474,10 +577,6 @@ const messages = {
         linux: "Linux",
         jquery: "jQuery"
       }
-    },
-    specialization: {
-      title: 'Backend Specialization',
-      content: 'REST APIs, Microservices, Database Optimization, Massive Data Processing',
     },
     achievement: {
       title: 'Key Achievement',
@@ -556,30 +655,141 @@ const messages = {
         },
       ],
     },
+    // SECCIÓN PROJECTS COMPLETA - AGREGADA
     projects: {
-      title: 'Featured Projects',
-      relax: {
-        title: 'Relax - Massive Sending Platform',
-        description:
-          'Massive email and SMS communications tool processing 150,000+ records/minute.',
-        technologies: ['PHP (Laravel)', 'MongoDB', 'Docker', 'Redis', 'SQS', 'Webhooks'],
-        achievements: [
-          'Reduced processing time from hours to minutes',
-          'Scaled to 150,000 records per job',
-          'Queue and microservices implementation',
+      pageTitle: 'My Projects',
+      pageSubtitle: 'A selection of my most recent and outstanding works',
+      filters: {
+        status: 'Status',
+        category: 'Category',
+        all: 'All',
+        completed: 'Completed',
+        inProgress: 'In Progress',
+        paused: 'Paused',
+        frontend: 'Frontend',
+        backend: 'Backend',
+        fullstack: 'Fullstack'
+      },
+      sections: {
+        technologies: 'Technologies',
+        technicalDetails: 'Technical Details',
+        challenges: 'Challenges',
+        features: 'Features'
+      },
+      details: {
+        architecture: 'Architecture',
+        methodology: 'Methodology',
+        database: 'Database',
+        security: 'Security',
+        testing: 'Testing',
+        communication: 'Communication',
+        deployment: 'Deployment',
+        monitoring: 'Monitoring',
+        framework: 'Framework',
+        buildTool: 'Build Tool',
+        performance: 'Performance',
+        mobile: 'Mobile',
+        backend: 'Backend'
+      },
+      buttons: {
+        viewCode: 'View Code',
+        viewDemo: 'View Demo',
+        pausedProject: 'Project Paused',
+        backendOnly: 'Backend Only'
+      },
+      status: {
+        completed: 'Completed',
+        inProgress: 'In Progress',
+        paused: 'Paused'
+      },
+      categories: {
+        frontend: 'Frontend',
+        backend: 'Backend',
+        fullstack: 'Fullstack'
+      }
+    },
+    projectsList: {
+      athletecore: {
+        title: "AthleteCore API",
+        description: "Backend for sports performance management system. Scalable architecture designed for multiple sports, starting with swimming.",
+        features: [
+          "RESTful API with Swagger documentation",
+          "Robust JWT authentication system",
+          "Generic architecture for multiple sports",
+          "Relational database with PostgreSQL",
+          "Docker configuration for development",
+          "Repository pattern with Spring Data JPA"
         ],
+        challenges: [
+          "Spring Security configuration in WSL environment",
+          "JDK conflict resolution with sdkman",
+          "Audit and soft delete implementation",
+          "Deep debugging of CORS and authentication configuration"
+        ]
+      },
+      lms: {
+        title: "Learning Management System (LMS)",
+        description: "Learning management system with microservices architecture. Advanced backend with focus on scalability and maintainability.",
+        features: [
+          "Decoupled microservices architecture",
+          "API Gateway with Spring Cloud",
+          "Distributed database",
+          "Real-time notification system",
+          "Independent authentication service"
+        ],
+        challenges: [
+          "Microservices communication design",
+          "Distributed data consistency management",
+          "Circuit breaker patterns implementation"
+        ]
+      },
+      portfolio: {
+        title: "Personal Portfolio",
+        description: "Modern frontend application showcasing my technical skills and projects. Designed with UX and performance best practices.",
+        features: [
+          "100% responsive design (mobile-first)",
+          "Multi-language system (ES/EN)",
+          "Functional contact form",
+          "SEO optimization and meta tags",
+          "Continuous deployment with Netlify"
+        ],
+        challenges: [
+          "Proxy configuration for local development",
+          "Multi-language implementation with Vue I18n",
+          "Build optimization for production",
+          "Formspree integration and CORS handling"
+        ]
+      },
+      relax: {
+        title: "Relax - Massive Sending Platform",
+        description: "Massive email and SMS communications tool processing 150,000+ records/minute.",
+        features: [
+          "Processing of 150,000+ records per minute",
+          "Massive email and SMS sending",
+          "Queue system with Redis and SQS",
+          "Webhooks for real-time notifications"
+        ],
+        challenges: [
+          "Massive data processing scaling",
+          "Sending time optimization",
+          "Queue and concurrency management"
+        ]
       },
       magnum: {
-        title: 'Magnum - Accounting System',
-        description:
-          'Business accounting system with native module for restaurant orders and Android app.',
-        technologies: ['Java', 'Android Studio', 'SQLite', 'MySQL', 'PHP'],
-        achievements: [
-          'Native Android app for order management',
-          'Complete integration with main system',
-          'Local storage for configurations',
+        title: "Magnum - Accounting System",
+        description: "Business accounting system with native module for restaurant orders and Android app.",
+        features: [
+          "Complete accounting system",
+          "Android app for order management",
+          "Real-time synchronization",
+          "Reports and analytics"
         ],
-      },
+        challenges: [
+          "Native Android app development",
+          "Legacy system integration",
+          "Offline/online data synchronization"
+        ]
+      }
     },
     footer: {
       copyright: '© {year} Angel Ortega Dev. All rights reserved.',
