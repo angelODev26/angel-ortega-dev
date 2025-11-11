@@ -1,8 +1,7 @@
 import { ref } from 'vue';
 
-// ✅ URL condicional: Proxy en desarrollo, directa en producción
+// ✅ URL directa de Formspree
 const FORMPREE_URL = 'https://formspree.io/f/xqagdgve';
-
 
 export function useContact() {
   const isSubmitting = ref(false);
@@ -16,38 +15,49 @@ export function useContact() {
 
     try {
       console.log('📤 Enviando formulario a:', FORMPREE_URL);
+      console.log('📝 Datos del formulario:', formData);
+
+      // ✅ Formato que Formspree espera
+      const formDataEncoded = new URLSearchParams();
+      formDataEncoded.append('name', formData.name || '');
+      formDataEncoded.append('email', formData.email || '');
+      formDataEncoded.append('subject', formData.subject || '');
+      formDataEncoded.append('message', formData.message || '');
+      formDataEncoded.append('_replyto', formData.email || '');
+      formDataEncoded.append('_subject', `Portfolio Contact: ${formData.subject || 'No Subject'}`);
 
       const response = await fetch(FORMPREE_URL, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded', // ✅ Formspree prefiere este formato
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          _replyto: formData.email
-        })
+        body: formDataEncoded.toString()
       });
 
-      // Manejo de respuesta simplificado
+      console.log('📨 Respuesta status:', response.status);
+
       if (response.ok) {
         const result = await response.json();
         console.log('✅ Formulario procesado:', result);
         success.value = true;
         return { success: true, data: result };
       } else {
-        const errorText = await response.text();
-        console.error('❌ Error del servidor:', errorText);
-        throw new Error(`Error ${response.status}: ${response.statusText}`);
+        // Formspree devuelve errores en JSON
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = { error: await response.text() };
+        }
+        console.error('❌ Error de Formspree:', errorData);
+        throw new Error(errorData.error || `Error ${response.status}: ${response.statusText}`);
       }
 
     } catch (err) {
       console.error('❌ Error de red:', err);
-      error.value = err.message;
-      return { success: false, error: err.message };
+      error.value = err.message || 'Error al enviar el mensaje. Intenta nuevamente.';
+      return { success: false, error: error.value };
     } finally {
       isSubmitting.value = false;
     }
